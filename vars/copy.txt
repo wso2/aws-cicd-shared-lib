@@ -1,0 +1,18 @@
+<h1>cp</h1>
+
+<p>
+   Copy provided source directory to the destination
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "cp"
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        cp ([src: "src", dest: "dest"])
+    <pre>
+</p>
