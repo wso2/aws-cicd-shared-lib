@@ -1,0 +1,19 @@
+<h1>log</h1>
+
+<p>
+    Out put a message to standard output
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "log".
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        log.info "Testing"
+        log.err "Error"
+    <pre>
+</p>

@@ -1,0 +1,18 @@
+<h1>executeTests</h1>
+
+<p>
+    Execute a shell script
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "executeTests".
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        executeTests "./ei_scenario_test.sh"
+    <pre>
+</p>

@@ -1,0 +1,21 @@
+<h1>deployAWS</h1>
+
+<p>
+    Deploy provided CFN on AWS.
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "deployAWS". This will return the required Test endpoint from the output.
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        deployAWS (wso2InstanceType: "t2.large", keyPairName: "keyName", certName: "cert1",
+                                    dbUsername: "dbUser", dbPassword: "dbpass", jdkVersion: "jdkversion", amiID: "amiID",
+                                    credID: "aws_creds", region: "us-east-1", environment: "prod", cf: "./cf.yaml",
+                                    testEndpoint: "testUrl")
+    <pre>
+</p>
