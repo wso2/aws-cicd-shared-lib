@@ -1,4 +1,4 @@
-# Shared resources in AWS CICD Pipeline
+# Shared resources in AWS Pipeline
 
 This repository contains the library resources used in AWS Pipeline. [Jenkins shared library](https://github.com/wso2/aws-cicd-shared-lib.git) contains set of functions used in [Jenkins pipeline artifacts](https://github.com/wso2/aws-cicd-pipeline.git).
 
