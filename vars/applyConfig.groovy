@@ -60,4 +60,3 @@ def call(Map config) {
         }
     }
 }
-
