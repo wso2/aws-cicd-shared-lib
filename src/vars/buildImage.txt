@@ -1,0 +1,19 @@
+<h1>buildImage</h1>
+
+<p>
+    Build an immutable image
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "buildImage"
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        env.IMAGE_ID = buildImage (product:"productname", version: "version", region: "region",
+                            packerJson: "packerjson", image: "amiID", packerManifest: "packermanifest")
+    <pre>
+</p>
