@@ -1,0 +1,18 @@
+<h1>cloneRepoToDir</h1>
+
+<p>
+    Clone a Git repository to a specific directory. By default master branch is cloned.
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "cloneRepoToDir"
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        cloneRepoToDir('https://github.com/wso2/cicd.git', 'cicd')
+    <pre>
+</p>

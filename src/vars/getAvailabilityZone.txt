@@ -1,0 +1,18 @@
+<h1>getAvailabilityZone</h1>
+
+<p>
+   Get the availability zone of the this instance. Only works in a AWS EC2 environment
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "getAvailabilityZone"
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-pipeline-core') _
+        getAvailabilityZone()
+    <pre>
+</p>
