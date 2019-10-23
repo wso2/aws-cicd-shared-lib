@@ -12,7 +12,7 @@
 
 <p>
     <pre>
-        @Library('wso2-pipeline-core') _
-        executeTests "./ei_scenario_test.sh"
+        @Library('wso2-jenkins-shared-lib')
+        executeTests "./testScript.sh"
     <pre>
 </p>
