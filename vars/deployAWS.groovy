@@ -20,19 +20,24 @@ def call(Map config) {
     def WSO2InstanceType = "WSO2InstanceType=${config.wso2InstanceType}"
     def KeyPairName = "KeyPairName=${config.keyPairName}"
     def CertificateName = "CertificateName=${config.certName}"
-    def DBUsername = "DBUsername=${config.dbUsername}"
-    def DBPassword = "DBPassword=${config.dbPassword}"
     def DBType = "DBType=${config.dbType}"
     def AMIId = "AMIid=${config.amiID}"
     def Product = "Product=${config.product}"
     def Version = "Version=${config.version}"
     def Environment = "Environment=${config.environment}"
-    env.AWS_CREDS_FILE = "${config.awsCredsFile}"
-    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${config.credID}"]]) {
-        def AWSAccessKeyId = "AWSAccessKeyId=${env.AWS_ACCESS_KEY_ID}"
-        def AWSAccessKeySecret = "AWSAccessKeySecret=${env.AWS_SECRET_ACCESS_KEY}"
-
-        withAWS(credentials: "${config.credID}", region: "${config.region}") {
+    withCredentials([[$class            : 'AmazonWebServicesCredentialsBinding',
+                      credentialsId     : "${config.awsCredID}",
+                      accessKeyVariable : 'AWSAccessKeyId',
+                      secretKeyVariable : 'AWSAccessKeySecret'],
+                     [$class            : 'UsernamePasswordMultiBinding',
+                      credentialsId     : "${config.dbCredID}",
+                      usernameVariable  : 'DBUsername',
+                      passwordVariable  : 'DBPassword']]) {
+        def AWSAccessKeyId = "AWSAccessKeyId=$AWSAccessKeyId"
+        def AWSAccessKeySecret = "AWSAccessKeySecret=$AWSAccessKeySecret"
+        def DBUsername = "DBUsername=$DBUsername"
+        def DBPassword = "DBPassword=$DBPassword"
+        withAWS(credentials: "${config.awsCredID}", region: "${config.region}") {
             def outputs = cfnUpdate(stack: "${config.stackName}", file: "${config.cf}",
                     params: [AWSAccessKeyId,
                              AWSAccessKeySecret,
