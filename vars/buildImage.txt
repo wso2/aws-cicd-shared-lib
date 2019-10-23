@@ -12,8 +12,15 @@
 
 <p>
     <pre>
-        @Library('wso2-pipeline-core') _
-        env.IMAGE_ID = buildImage (product:"productname", version: "version", region: "region",
-                            packerJson: "packerjson", image: "amiID", packerManifest: "packermanifest")
+        @Library('wso2-jenkins-shared-lib')
+        buildImage ([product            : "product",
+                     version            : "version",
+                     deploymentPattern  : "deploymentPattern",
+                     region             : "region",
+                     dbType             : "dbType"
+                     packerJson         : "packerjson",
+                     imageResources     : "imageResources"
+                     credID             : "credID"
+                     packerManifest     : "packermanifest")
     <pre>
 </p>
