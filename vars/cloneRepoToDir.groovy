@@ -17,9 +17,9 @@
 * under the License.
 */
 
-def call(String repoUrl, String directory) {
-    dir(directory) {
+def call(Map config) {
+    dir(config.directory) {
         checkout([$class    : 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false,
-                  extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repoUrl]]])
+                  extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: config.credID, url: config.repoUrl]]])
     }
 }
