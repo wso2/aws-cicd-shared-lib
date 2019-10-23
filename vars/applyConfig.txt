@@ -13,8 +13,15 @@
 <p>
     <pre>
     <pre>
-        @Library('wso2-pipeline-core') _
-        env.IMAGE_ID = applyConfig(product:"productName", version: "version", wum_creds: "wum_creds", puppetManifest: "puppetmanifest",
-                            artifactsLoc: "artifactsLoc",zipLoc: "zipdirLoc", wumHome: "wumHome")
+        @Library('wso2-jenkins-shared-lib')
+        applyConfig(product            : "product",
+                    version            : "version",
+                    deploymentPattern  : "deploymentPattern}",
+                    wum_creds          : "wum_creds",
+                    puppetManifest     : "puppetManifest",
+                    artifactsLoc       : "artifactsLoc",
+                    zipLoc             : "zipLoc",
+                    wumHome            : "wumHome",
+                    puppetConfLoc      : "puppetConfLoc"]
     <pre>
 </p>

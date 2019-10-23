@@ -12,10 +12,20 @@
 
 <p>
     <pre>
-        @Library('wso2-pipeline-core') _
-        deployAWS (wso2InstanceType: "t2.large", keyPairName: "keyName", certName: "cert1",
-                                    dbUsername: "dbUser", dbPassword: "dbpass", jdkVersion: "jdkversion", amiID: "amiID",
-                                    credID: "aws_creds", region: "us-east-1", environment: "prod", cf: "./cf.yaml",
-                                    testEndpoint: "testUrl")
+        @Library('wso2-jenkins-shared-lib')
+        deployAWS([wso2InstanceType: "wso2InstanceType",
+                   product         : "product",
+                   version         : "version",
+                   keyPairName     : "keyPairName",
+                   certName        : "certName",
+                   dbCredID        : "dbCredID",
+                   dbType          : "dbType",
+                   amiID           : "amiID",
+                   awsCredID       : "awsCredID",
+                   region          : "region",
+                   stackName       : "stackName",
+                   cf              : "cf",
+                   testEndpoint    : "testEndpoint",
+                   environment     : "environment"])
     <pre>
 </p>
