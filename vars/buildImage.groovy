@@ -26,28 +26,32 @@ String call(Map config) {
              "PACKER_REGION=${config.region}",
              "PACKER_JSON=${config.packerJson}",
              "PACKER_MANIFEST=${config.packerManifest}",
-             "IMAGE_RESOURCES=${config.imageResources}",
-             "AWS_CREDS_FILE=${config.awsCredsFile}"]) {
-        int status = sh(
-                script: """
-                        export AWS_SHARED_CREDENTIALS_FILE=$AWS_CREDS_FILE 
+             "IMAGE_RESOURCES=${config.imageResources}"]) {
+        withCredentials([[$class           : 'AmazonWebServicesCredentialsBinding', credentialsId: "${config.credID}",
+                          accessKeyVariable: 'AWSAccessKeyId',
+                          secretKeyVariable: 'AWSAccessKeySecret']]) {
+            int status = sh(
+                    script: """
                         packer build  -var "product=$PRODUCT" \
                         -var "version=$VERSION" \
                         -var "deploymentPattern=$DEPLOYMENTPATTERN" \
                         -var "dbType=$DBTYPE" \
                         -var "region=$PACKER_REGION" \
                         -var "image_resources=$IMAGE_RESOURCES" \
+                        -var "aws_access_key=$AWSAccessKeyId" \
+                        -var "aws_secret_key=$AWSAccessKeySecret" \
                         -var "manifest=$PACKER_MANIFEST" $PACKER_JSON
                         """,
-                returnStatus: true
-        )
-        if (status != Constants.ControlConstants.STATUS_COMPLETED) {
-            throw new Exception("AMI building is failed !")
+                    returnStatus: true
+            )
+            if (status != Constants.ControlConstants.STATUS_COMPLETED) {
+                throw new Exception("AMI building is failed !")
+            }
         }
+        def packer_post = readJSON file: "${config.packerManifest}", text: ''
+        def size = packer_post.builds.artifact_id.size()
+        def ami_info = packer_post.builds.artifact_id[size - 1]
+        def (value1, value2) = "$ami_info".tokenize(':')
+        return value2
     }
-    def packer_post = readJSON file: "${config.packerManifest}", text: ''
-    def size = packer_post.builds.artifact_id.size()
-    def ami_info = packer_post.builds.artifact_id[size - 1]
-    def (value1, value2) = "$ami_info".tokenize(':')
-    return value2
 }
