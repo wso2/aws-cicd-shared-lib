@@ -12,7 +12,9 @@
 
 <p>
     <pre>
-        @Library('wso2-pipeline-core') _
-        cloneRepoToDir('https://github.com/wso2/cicd.git', 'cicd')
+        @Library('wso2-jenkins-shared-lib')
+        cloneRepoToDir ([ repoUrl    : "repoUrl",
+                          directory  : "directory",
+                          credID     : "credID" ])
     <pre>
 </p>
