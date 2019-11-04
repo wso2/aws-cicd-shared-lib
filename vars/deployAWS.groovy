@@ -25,22 +25,16 @@ def call(Map config) {
     def Product = "Product=${config.product}"
     def Version = "Version=${config.version}"
     def Environment = "Environment=${config.environment}"
-    withCredentials([[$class            : 'AmazonWebServicesCredentialsBinding',
-                      credentialsId     : "${config.awsCredID}",
-                      accessKeyVariable : 'AWSAccessKeyId',
-                      secretKeyVariable : 'AWSAccessKeySecret'],
-                     [$class            : 'UsernamePasswordMultiBinding',
+    def IAMRole = "IAMRole=${config.iamRole}"
+    withCredentials([[$class            : 'UsernamePasswordMultiBinding',
                       credentialsId     : "${config.dbCredID}",
                       usernameVariable  : 'DBUsername',
                       passwordVariable  : 'DBPassword']]) {
-        def AWSAccessKeyId = "AWSAccessKeyId=$AWSAccessKeyId"
-        def AWSAccessKeySecret = "AWSAccessKeySecret=$AWSAccessKeySecret"
         def DBUsername = "DBUsername=$DBUsername"
         def DBPassword = "DBPassword=$DBPassword"
-        withAWS(credentials: "${config.awsCredID}", region: "${config.region}") {
+        withAWS(role:"${config.iamRole}", region: "${config.region}") {
             def outputs = cfnUpdate(stack: "${config.stackName}", file: "${config.cf}",
-                    params: [AWSAccessKeyId,
-                             AWSAccessKeySecret,
+                    params: [IAMRole,
                              WSO2InstanceType,
                              KeyPairName,
                              CertificateName,
