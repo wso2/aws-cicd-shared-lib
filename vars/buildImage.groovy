@@ -26,13 +26,12 @@ String call(Map config) {
              "PACKER_REGION=${config.region}",
              "PACKER_JSON=${config.packerJson}",
              "PACKER_MANIFEST=${config.packerManifest}",
+             "IAM_ROLE=${config.iamRole}",
              "IMAGE_RESOURCES=${config.imageResources}"]) {
-        withCredentials([[$class           : 'AmazonWebServicesCredentialsBinding', credentialsId: "${config.credID}",
-                          accessKeyVariable: 'AWSAccessKeyId',
-                          secretKeyVariable: 'AWSAccessKeySecret']]) {
             int status = sh(
                     script: """
                         packer build  -var "product=$PRODUCT" \
+                        -var "iamRole=$IAM_ROLE" \
                         -var "version=$VERSION" \
                         -var "deploymentPattern=$DEPLOYMENTPATTERN" \
                         -var "dbType=$DBTYPE" \
@@ -47,7 +46,6 @@ String call(Map config) {
             if (status != Constants.ControlConstants.STATUS_COMPLETED) {
                 throw new Exception("AMI building is failed !")
             }
-        }
         def packer_post = readJSON file: "${config.packerManifest}", text: ''
         def size = packer_post.builds.artifact_id.size()
         def ami_info = packer_post.builds.artifact_id[size - 1]
