@@ -21,7 +21,7 @@
                    dbCredID        : "dbCredID",
                    dbType          : "dbType",
                    amiID           : "amiID",
-                   awsCredID       : "awsCredID",
+                   iamRole         : "iamRole",
                    region          : "region",
                    stackName       : "stackName",
                    cf              : "cf",
