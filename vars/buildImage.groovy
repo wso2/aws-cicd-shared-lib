@@ -37,8 +37,6 @@ String call(Map config) {
                         -var "dbType=$DBTYPE" \
                         -var "region=$PACKER_REGION" \
                         -var "image_resources=$IMAGE_RESOURCES" \
-                        -var "aws_access_key=$AWSAccessKeyId" \
-                        -var "aws_secret_key=$AWSAccessKeySecret" \
                         -var "manifest=$PACKER_MANIFEST" $PACKER_JSON
                         """,
                     returnStatus: true
