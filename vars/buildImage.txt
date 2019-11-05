@@ -20,7 +20,6 @@
                      dbType             : "dbType"
                      packerJson         : "packerjson",
                      imageResources     : "imageResources"
-                     credID             : "credID"
                      packerManifest     : "packermanifest")
     <pre>
 </p>

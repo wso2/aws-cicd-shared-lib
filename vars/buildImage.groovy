@@ -26,12 +26,10 @@ String call(Map config) {
              "PACKER_REGION=${config.region}",
              "PACKER_JSON=${config.packerJson}",
              "PACKER_MANIFEST=${config.packerManifest}",
-             "IAM_ROLE=${config.iamRole}",
              "IMAGE_RESOURCES=${config.imageResources}"]) {
             int status = sh(
                     script: """
                         packer build  -var "product=$PRODUCT" \
-                        -var "iamRole=$IAM_ROLE" \
                         -var "version=$VERSION" \
                         -var "deploymentPattern=$DEPLOYMENTPATTERN" \
                         -var "dbType=$DBTYPE" \
