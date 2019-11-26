@@ -33,6 +33,7 @@ class Constants {
         static final int STATUS_FAILED_ARTIFACT_APPLY = 17
         static final int STATUS_FAILED_WUM_INIT = 18
         static final int STATUS_FAILED_DOWNLOAD_PACK = 19
+        static final int STATUS_FAILED_DOWNLOAD_PATCH_FILE=20
     }
     class Stages {
         static final String SETUP_ENV = "Setup Environment"

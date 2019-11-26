@@ -56,6 +56,8 @@ def call(Map config) {
                 throw new Exception("Failed to apply artifatcs")
             } else if (status == Constants.ControlConstants.STATUS_FAILED_DOWNLOAD_PACK) {
                 throw new Exception("Failed to download product pack from S3 bucket")
+            } else if(status == Constants.ControlConstants.STATUS_FAILED_DOWNLOAD_PATCH_FILE) {
+                throw new Exception("Failed to download the patch file from S3 bucket")
             }
         }
     }
