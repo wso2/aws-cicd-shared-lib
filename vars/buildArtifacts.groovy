@@ -21,7 +21,8 @@
 import org.wso2.util.Constants
 
 def call(Map config) {
-    withEnv(["ARTIFACT_LOC=${config.artifactsLoc}"]) {
+    withEnv(["ARTIFACT_LOC=${config.artifactsLoc}",
+             "IMAGE_RESOURCES=${config.image_resources}"]) {
 
             int status = sh(
                     script: "${config.artifactConf}",
