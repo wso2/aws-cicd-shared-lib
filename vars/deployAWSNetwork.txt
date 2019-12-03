@@ -1,0 +1,20 @@
+<h1>deployAWSNetwork</h1>
+
+<p>
+    Deploy provided CFN on AWS.
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "deployAWSNetwork". This will return the required VPC ID from the output.
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+        deployAWSNetwork([stackName       : "stackName",
+                          cf              : "cf",
+                          vpcID           : "vpcID"])
+    <pre>
+</p>
