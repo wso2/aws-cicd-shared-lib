@@ -46,6 +46,7 @@ class Constants {
         static final String APPROVE_PRODUCTION = "Approve Production"
         static final String DEPLOY_PRODUCTION = "Deploy to Production"
         static final String BUILD_ARTIFACTS = "Build artifacts"
+        static final String DEPLOY_NETWORK = "Deploy Network Resources"
 
     }
     class Paths {
