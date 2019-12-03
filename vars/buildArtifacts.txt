@@ -1,0 +1,20 @@
+<h1>buildArtifacts</h1>
+
+<p>
+    Build artifacts from Source Code
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "buildIArtifacts"
+</p>
+
+<p>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+        buildArtifacts ([artifactLoc     : "artifactLoc",
+                         image_resources : "image_resources",
+                         artifactConf    : "artifactConf")
+    <pre>
+</p>
