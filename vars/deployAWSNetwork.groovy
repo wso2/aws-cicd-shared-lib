@@ -17,6 +17,5 @@
 * under the License.
 */
 def call(Map config) {
-    def outputs = cfnUpdate(stack: "${config.stackName}", file: "${config.cf}", timeoutInMinutes: 30, pollInterval: 1000)
-    return outputs."${config.vpcId}"
+    cfnUpdate(stack: "${config.stackName}", file: "${config.cf}", timeoutInMinutes: 30, pollInterval: 1000)
 }
