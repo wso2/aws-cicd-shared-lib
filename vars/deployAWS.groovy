@@ -26,6 +26,8 @@ def call(Map config) {
     def Version = "Version=${config.version}"
     def Environment = "Environment=${config.environment}"
     def IAMRole = "IAMRole=${config.iamRole}"
+    def NetworkStackName = "NetworkStackName=${config.networkStackName}"
+    def VPCID = "VPCID=${config.vpcId}"
     withCredentials([[$class            : 'UsernamePasswordMultiBinding',
                       credentialsId     : "${config.dbCredID}",
                       usernameVariable  : 'DBUsername',
@@ -44,7 +46,9 @@ def call(Map config) {
                              AMIId,
                              Product,
                              Version,
-                             Environment]
+                             Environment,
+                             VPCID,
+                             NetworkStackName]
                     , timeoutInMinutes: 30, pollInterval: 1000)
             return outputs."${config.testEndpoint}"
         }
