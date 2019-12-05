@@ -22,12 +22,14 @@ def call(Map config) {
     withEnv(["MOUNT_POINT=${config.mountPoint}", "EFS_ID=${config.efsId}", "REGION=${config.region}"]) {
         int status = sh(
                 script: '''
+                exit
                 sudo mkdir -p ${MOUNT_POINT}
                 if grep -qs ${MOUNT_POINT} /proc/mounts; then
                     echo "Already mounted."
                 else
                     sudo mount -t nfs4 -o nfsvers=4.1 ${EFS_ID}.efs.${REGION}.amazonaws.com:/ ${MOUNT_POINT}
                 fi
+                su jenkins
                 ''',
                 returnStatus: true
         )
