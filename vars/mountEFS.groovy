@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 /*
-*  Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*  Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
 *  WSO2 Inc. licenses this file to you under the Apache License,
 *  Version 2.0 (the "License"); you may not use this file except
@@ -22,14 +22,12 @@ def call(Map config) {
     withEnv(["MOUNT_POINT=${config.mountPoint}", "EFS_ID=${config.efsId}", "REGION=${config.region}"]) {
         int status = sh(
                 script: '''
-                exit
                 sudo mkdir -p ${MOUNT_POINT}
                 if grep -qs ${MOUNT_POINT} /proc/mounts; then
                     echo "Already mounted."
                 else
                     sudo mount -t nfs4 -o nfsvers=4.1 ${EFS_ID}.efs.${REGION}.amazonaws.com:/ ${MOUNT_POINT}
                 fi
-                su jenkins
                 ''',
                 returnStatus: true
         )
