@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 /*
-*  Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*  Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
 *  WSO2 Inc. licenses this file to you under the Apache License,
 *  Version 2.0 (the "License"); you may not use this file except
@@ -19,20 +19,19 @@
 import org.wso2.util.Constants
 
 def call(Map config) {
-    withEnv(["MOUNT_POINT=${config.mountPoint}", "EFS_ID=${config.efsId}", "REGION=${config.region}"]) {
+    withEnv(["MOUNT_POINT=${config.mountPoint}"]) {
         int status = sh(
                 script: '''
-                sudo mkdir -p ${MOUNT_POINT}
                 if grep -qs ${MOUNT_POINT} /proc/mounts; then
-                    echo "Already mounted."
+                    sudo umount ${MOUNT_POINT}
                 else
-                    sudo mount -t nfs4 -o nfsvers=4.1 ${EFS_ID}.efs.${REGION}.amazonaws.com:/ ${MOUNT_POINT}
+                    echo "Already unmounted"
                 fi
                 ''',
                 returnStatus: true
         )
         if (status != Constants.ControlConstants.STATUS_COMPLETED) {
-            throw new Exception("Mount failed")
+            throw new Exception("Unmount failed")
         }
     }
 }
