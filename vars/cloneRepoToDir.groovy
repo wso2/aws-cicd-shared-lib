@@ -19,7 +19,7 @@
 
 def call(Map config) {
     dir(config.directory) {
-        checkout([$class    : 'GitSCM', branches: [[name: '*/1.0.0']], doGenerateSubmoduleConfigurations: false,
+        checkout([$class    : 'GitSCM', branches: [[name: ${config.branch}]], doGenerateSubmoduleConfigurations: false,
                   extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: config.credID, url: config.repoUrl]]])
     }
 }
