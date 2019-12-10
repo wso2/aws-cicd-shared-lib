@@ -49,7 +49,7 @@ class Constants {
         static final String DEPLOY_NETWORK = "Deploy Network Resources"
         static final String CLONE_ARTIFACT_SOURCE = "Clone artifact source repository"
         static final String MOUNT_EFS = "Mount EFS"
-        static final String ARTIFACTS = "Copy artifacts to EFS"
+        static final String COPY_ARTIFACTS = "Copy artifacts to EFS"
         static final String UNMOUNT_EFS= "Unmount EFS"
 
     }
