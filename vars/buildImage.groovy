@@ -26,6 +26,7 @@ String call(Map config) {
              "PACKER_REGION=${config.region}",
              "PACKER_JSON=${config.packerJson}",
              "PACKER_MANIFEST=${config.packerManifest}",
+             "AMI_NAME=${config.amiName}",
              "IMAGE_RESOURCES=${config.imageResources}"]) {
             int status = sh(
                     script: """
@@ -35,6 +36,7 @@ String call(Map config) {
                         -var "dbType=$DBTYPE" \
                         -var "region=$PACKER_REGION" \
                         -var "image_resources=$IMAGE_RESOURCES" \
+                        -var "amiName=$AMI_NAME" \
                         -var "manifest=$PACKER_MANIFEST" $PACKER_JSON
                         """,
                     returnStatus: true
