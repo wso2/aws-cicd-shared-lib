@@ -51,6 +51,7 @@ class Constants {
         static final String MOUNT_EFS = "Mount EFS"
         static final String COPY_ARTIFACTS = "Copy artifacts to EFS"
         static final String UNMOUNT_EFS= "Unmount EFS"
+        static final String WRITE_EFS_IP = "Write EFS IP"
 
     }
     class Paths {
