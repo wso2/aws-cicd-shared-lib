@@ -19,12 +19,11 @@
 import org.wso2.util.Constants
 
 def call(Map config) {
-    withEnv(["SOURCE_ARTIFACTS=${config.image_resources}", "MOUNT_POINT=${config.mountPoint}"]) {
+    withEnv(["SOURCE_ARTIFACTS=${config.image_resources}", "MOUNT_POINT=${config.mountPoint}", "MOUNT_DIR=${config.mountDir}"]) {
         int status = sh(
                 script: '''
-                sudo mkdir -p ${MOUNT_POINT}/server/webapps
-                sudo cp -f ${SOURCE_ARTIFACTS}/*.war ${MOUNT_POINT}/server/webapps/ 
-                sudo cp -f ${SOURCE_ARTIFACTS}/*.car ${MOUNT_POINT}/server/webapps/
+                sudo mkdir -p ${MOUNT_POINT}/deployment/server/${MOUNT_DIR}
+                sudo cp ${SOURCE_ARTIFACTS}/* ${MOUNT_POINT}/deployment/server/${MOUNT_DIR}/ 
                 ''',
                 returnStatus: true
         )
