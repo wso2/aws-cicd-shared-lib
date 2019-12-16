@@ -26,7 +26,7 @@ def call(Map config) {
     def Version = "Version=${config.version}"
     def Environment = "Environment=${config.environment}"
     def IAMRole = "IAMRole=${config.iamRole}"
-    def NetworkStackName = "NetworkStackName=${config.networkStackName}"
+    def TransitGatewayId = "TransitGatewayId=${config.TransitGatewayId}"
     withCredentials([[$class            : 'UsernamePasswordMultiBinding',
                       credentialsId     : "${config.dbCredID}",
                       usernameVariable  : 'DBUsername',
@@ -46,7 +46,7 @@ def call(Map config) {
                              Product,
                              Version,
                              Environment,
-                             NetworkStackName]
+                             TransitGatewayId]
                     , timeoutInMinutes: 30, pollInterval: 1000)
             return outputs
         }
