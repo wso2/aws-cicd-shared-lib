@@ -19,14 +19,14 @@
 import org.wso2.util.Constants
 
 def call(Map config) {
-    withEnv(["MOUNT_POINT=${config.mountPoint}", "EFS_ID=${config.efsId}", "REGION=${config.region}"]) {
+    withEnv(["MOUNT_POINT=${config.mountPoint}", "EFS_IP=${config.efsIp}", "REGION=${config.region}"]) {
         int status = sh(
                 script: '''
                 sudo mkdir -p ${MOUNT_POINT}
                 if grep -qs ${MOUNT_POINT} /proc/mounts; then
                     echo "Already mounted."
                 else
-                    sudo mount -t nfs4 -o nfsvers=4.1 ${EFS_ID}.efs.${REGION}.amazonaws.com:/ ${MOUNT_POINT}
+                    sudo mount -t nfs4 -o nfsvers=4.1 ${EFS_IP}:/ ${MOUNT_POINT}
                 fi
                 ''',
                 returnStatus: true
