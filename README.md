@@ -17,15 +17,18 @@ This library depends on following Jenkins plugins:
  
  **Step 2**: Use the functions under vars folder. Refer the text files for each function for samples.
  
-     
-```
-Example: Log information
-@Library('wso2-jenkins-shared-lib')
-
-node("master") {
-    stage("HelloworldExample") {
-        log.info 'helloworld'
-        log.err 'helloworld'
-    }
-}
-```
+ * [applyConfig](vars/applyConfig.groovy)
+ * [buildArtifacts](vars/buildArtifacts.groovy)
+ * [buildImage](vars/buildImage.groovy)
+ * [cloneRepotoDir](vars/cloneRepotoDir.groovy)
+ * [copy](vars/copy.groovy)
+ * [copyArtifacts](vars/copyArtifacts.groovy)
+ * [deployAWS](vars/deployAWS.groovy)
+ * [deployAWSNetwork](vars/deployAWSNetwork.groovy)
+ * [deployAWSProd](vars/deployAWSProd.groovy)
+ * [executeTests](vars/executeTests.groovy)
+ * [getAvailabilityZone](vars/getAvailabilityZone.groovy)
+ * [log](vars/log.groovy)
+ * [mountEFS](vars/mountEFS.groovy)
+ * [unmountEFS](vars/unmountEFS.groovy)
+ * [writeEFSIP](vars/writeEFSIP.groovy)
