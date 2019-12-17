@@ -1,0 +1,21 @@
+<h1>copyArtifacts</h1>
+
+<p>
+    Copy contents in a directory to another location
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "copyArtifacts"
+</p>
+
+<p>
+    <pre>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+         copyArtifacts ([image_resources:"${ARTIFACTS_DIR_LOC}",
+                         mountDir       :"${DEPLOYMENT_DIR}","
+                         mountPoint     :"${EFS_MOUNT}"])
+    <pre>
+</p>
