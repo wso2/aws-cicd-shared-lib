@@ -1,0 +1,20 @@
+<h1>writeEFSIP</h1>
+
+<p>
+    Write a value to jenkins environment file
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "writeEFSIP"
+</p>
+
+<p>
+    <pre>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+        writeEFSIP([efsIdentifier: "${PROD_EFS_IDENTIFIER}",
+                    MountTargetIP: "${outputs.MountTargetIP}"])
+    <pre>
+</p>

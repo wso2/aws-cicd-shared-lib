@@ -1,0 +1,21 @@
+<h1>mountEFS</h1>
+
+<p>
+    Mount a given EFS using IP to desired directory
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "mountEFS"
+</p>
+
+<p>
+    <pre>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+        mountEFS([mountPoint : "${EFS_MOUNT}",
+                  efsIp      : "${EFS_IDENTIFIER}",
+                  region     : "${env.REGION}"])
+    <pre>
+</p>
