@@ -1,0 +1,32 @@
+<h1>deployAWSProd</h1>
+
+<p>
+    Deploy provided production CFN on AWS.
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "deployAWSProd"
+</p>
+
+<p>
+    <pre>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+        deployAWSProd([wso2InstanceType: "${env.WSO2InstanceType}",
+                        product         : "${PRODUCT}",
+                        version         : "${VERSION}",
+                        keyPairName     : "${env.KeyPairName}",
+                        certName        : "${env.CertificateName}",
+                        dbCredID        : "${DB_CREDS}",
+                        dbType          : "${env.DBType}",
+                        amiID           : "${env.IMAGE_ID}",
+                        iamRole         : "${env.IAMRole}",
+                        region          : "${env.REGION}",
+                        stackName       : "${STACK_PROD}",
+                        cf              : "${PROD_CF}",
+                        environment     : "${PROD}",
+                        TransitGatewayId: "${env.TransitGatewayId}"])
+    <pre>
+</p>

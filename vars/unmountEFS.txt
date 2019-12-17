@@ -1,0 +1,19 @@
+<h1>unmountEFS</h1>
+
+<p>
+    Unmount a given EFS
+</p>
+
+<h2>How to use</h2>
+
+<p>
+    Below is an example how you can use "unmountEFS"
+</p>
+
+<p>
+    <pre>
+    <pre>
+        @Library('wso2-jenkins-shared-lib')
+        unmountEFS([mountPoint : "${EFS_MOUNT}"])
+    <pre>
+</p>
