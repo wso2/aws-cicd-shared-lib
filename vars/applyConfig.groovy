@@ -26,6 +26,7 @@ def call(Map config) {
              "WUM_HOME=${config.wumHome}",
              "PUPPET_CONF_LOC=${config.puppetConfLoc}",
              "DEPLOYMENT_PATTERN=${config.deploymentPattern}",
+             "PACK_DOWNLOAD_PATH=${config.PackDownloadPath}",
              "PRODUCT=${config.product}",
              "VERSION=${config.version}"]) {
 
@@ -36,18 +37,12 @@ def call(Map config) {
                     script: "${config.puppetManifest}",
                     returnStatus: true
             )
-            if (status == Constants.ControlConstants.STATUS_FAILED_WUM_UPDATE) {
+            if (status == Constants.ControlConstants.STATUS_FAILED_WSO2_UPDATE) {
                 throw new Exception("Failed to apply updates")
-            } else if (status == Constants.ControlConstants.STATUS_FAILED_WUM_INIT) {
-                throw new Exception("Failed to init WUM. Check your WUM credentials")
-            } else if (status == Constants.ControlConstants.STATUS_FAILED_WUM_ADD) {
-                throw new Exception("Wum add process failed")
-            } else if (status == Constants.ControlConstants.STATUS_FAILED_INPLACE_UPDATES) {
-                throw new Exception("Inplace update process failed")
+            } else if (status == Constants.ControlConstants.STATUS_FAILED_WSO2_INIT) {
+                throw new Exception("Failed to init WSO2 Updates. Check your WSO2 credentials")
             } else if (status == Constants.ControlConstants.STATUS_FAILED_PUPPET_APPLY) {
                 throw new Exception("Puppet apply process failed")
-            } else if (status == Constants.ControlConstants.STATUS_FAILED_TO_MOVE_UPDATED_PRODUCT) {
-                throw new Exception("Failed to move updated pack")
             } else if (status == Constants.ControlConstants.STATUS_FAILED_UNZIP) {
                 throw new Exception("Failed to unzip")
             } else if (status == Constants.ControlConstants.STATUS_FAILED_RM_UNZIP) {
@@ -55,7 +50,7 @@ def call(Map config) {
             } else if (status == Constants.ControlConstants.STATUS_FAILED_ARTIFACT_APPLY) {
                 throw new Exception("Failed to apply artifatcs")
             } else if (status == Constants.ControlConstants.STATUS_FAILED_DOWNLOAD_PACK) {
-                throw new Exception("Failed to download product pack from S3 bucket")
+                throw new Exception("Failed to download product pack from given location")
             } else if(status == Constants.ControlConstants.STATUS_FAILED_DOWNLOAD_PATCH_FILE) {
                 throw new Exception("Failed to download the patch file from S3 bucket")
             }

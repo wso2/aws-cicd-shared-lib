@@ -23,15 +23,12 @@ package org.wso2.util
 class Constants {
     class ControlConstants {
         static final int STATUS_COMPLETED = 0
-        static final int STATUS_FAILED_WUM_UPDATE = 10
-        static final int STATUS_FAILED_WUM_ADD = 11
-        static final int STATUS_FAILED_INPLACE_UPDATES = 12
+        static final int STATUS_FAILED_WSO2_UPDATE = 10
         static final int STATUS_FAILED_PUPPET_APPLY = 13
-        static final int STATUS_FAILED_TO_MOVE_UPDATED_PRODUCT = 14
         static final int STATUS_FAILED_UNZIP = 15
         static final int STATUS_FAILED_RM_UNZIP = 16
         static final int STATUS_FAILED_ARTIFACT_APPLY = 17
-        static final int STATUS_FAILED_WUM_INIT = 18
+        static final int STATUS_FAILED_WSO2_INIT = 18
         static final int STATUS_FAILED_DOWNLOAD_PACK = 19
         static final int STATUS_FAILED_DOWNLOAD_PATCH_FILE=20
     }
